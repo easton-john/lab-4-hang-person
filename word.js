@@ -1,4 +1,4 @@
-/*exported wordList*/
+/* exported wordList */
 //list of words for game
 var wordList = [
     'blue',
