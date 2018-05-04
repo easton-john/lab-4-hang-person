@@ -11,7 +11,7 @@ function getRandomIndex(max) {
 
 function randomWord(wordArray) {
 
-    //this pull a random number
+    //this pulls a random number
     var index = getRandomIndex(wordArray.length);
     console.log(index);
 
@@ -29,8 +29,8 @@ function randomWord(wordArray) {
 //small change
 
 // storing randomized word from randomWord(wordArray)
-var arrayValue = randomWord(wordList);
-console.log(arrayValue);
+var gameWord = randomWord(wordList);
+console.log(gameWord);
 
 //var maxGuesses = 6;
 // if(maxGuesses === 0){
@@ -38,18 +38,27 @@ console.log(arrayValue);
 //     break;
 // }
 
-// this is the for loop to check if letter is in word
+var newArray = [];
+for(var i = 0; i < gameWord.length; i++) {
+    newArray[i] = '_';
+}
+
+console.log(newArray);
+
+//var guessesRemaining;
+//while(guessesRemaining < 6) {
+//guessesRemaining++
+
 function buttonPress() {
     var userInput = document.getElementById('user-input').value;
     console.log('user typed ' + userInput);
 
-    //testing input against array
-    for(var i = 0; i < arrayValue.length; i++) {
-        if(userInput === arrayValue[i]) {
+    for(var j = 0; j < gameWord.length; j++) {
+        if(userInput.toLowerCase() === gameWord[j]) {
+
             console.log('true');
-            //put correct letter on html
-            document.getElementById('letters').textContent = userInput;
-            break;
+            newArray[j] = userInput;
+            document.getElementById('letters').textContent = newArray.join(' ');   
         }
         else {
             console.log(userInput + ' is wrong');
@@ -57,3 +66,4 @@ function buttonPress() {
     }
 
 }
+console.log(newArray.join(' '));
