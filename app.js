@@ -32,7 +32,11 @@ function randomWord(wordArray) {
 var arrayValue = randomWord(wordList);
 console.log(arrayValue);
 
-var maxGuesses = 6;
+//var maxGuesses = 6;
+// if(maxGuesses === 0){
+//     console.log('sorry, out of guesses.');
+//     break;
+// }
 
 // this is the for loop to check if letter is in word
 function buttonPress() {
@@ -41,11 +45,7 @@ function buttonPress() {
 
     //testing input against array
     for(var i = 0; i < arrayValue.length; i++) {
-        if(maxGuesses === 0){
-            console.log('sorry, out of guesses.');
-            break;
-        }
-        else if(userInput === arrayValue[i]) {
+        if(userInput === arrayValue[i]) {
             console.log('true');
             //put correct letter on html
             document.getElementById('letters').textContent = userInput;
