@@ -8,6 +8,7 @@ function getRandomIndex(max) {
 }
 
 //this function will return a random word for hang person game
+
 function randomWord(wordArray) {
 
     //this pull a random number
@@ -34,15 +35,17 @@ console.log(arrayValue);
 
 // this is the for loop to check if letter is in word
 function buttonPress() {
-    var userInput = document.getElementById('user-input').value;
-    console.log(userInput);
-
+    var userInput = document.getElementById('user-input').toLowerCase().value;
+    console.log('user typed ' + userInput);
     for(var i = 0; i < arrayValue.length; i++) {
-        if(userInput === arrayValue[i]) {
-            console.log(userInput + ' true');
+        if(userInput.toLowerCase() === randomWord[i]) {
+            console.log('true');
+            //put correct letter on html
+            document.getElementById('letters').textContent = userInput;
+            break;
         }
         else {
-            console.log('wrong');
+            console.log(userInput + ' is wrong');
         }
     }
 }
