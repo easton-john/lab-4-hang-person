@@ -25,6 +25,7 @@ function randomWord(wordArray) {
     return newWordArray;
 }
 
+//small change
 
 // storing randomized word from randomWord(wordArray)
 var arrayValue = randomWord(wordList);
