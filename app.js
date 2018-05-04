@@ -32,6 +32,7 @@ function randomWord(wordArray) {
 var gameWord = randomWord(wordList);
 console.log(gameWord);
 
+var maxGuesses = 6;
 
 var newArray = [];
 for(var i = 0; i < gameWord.length; i++) {
@@ -50,6 +51,7 @@ function buttonPress() {
 
     for(var j = 0; j < gameWord.length; j++) {
         if(userInput.toLowerCase() === gameWord[j]) {
+
             console.log('true');
             newArray[j] = userInput;
             document.getElementById('letters').textContent = newArray.join(' ');   
@@ -58,5 +60,6 @@ function buttonPress() {
             console.log(userInput + ' is wrong');
         }
     }
+
 }
 console.log(newArray.join(' '));

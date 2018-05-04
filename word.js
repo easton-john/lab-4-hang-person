@@ -5,5 +5,5 @@ var wordList = [
     'black',
     'orange',
     'green',
-    'steel blue'
+    'steelblue'
 ];
