@@ -32,7 +32,11 @@ function randomWord(wordArray) {
 var gameWord = randomWord(wordList);
 console.log(gameWord);
 
-var maxGuesses = 6;
+//var maxGuesses = 6;
+// if(maxGuesses === 0){
+//     console.log('sorry, out of guesses.');
+//     break;
+// }
 
 var newArray = [];
 for(var i = 0; i < gameWord.length; i++) {
@@ -41,25 +45,40 @@ for(var i = 0; i < gameWord.length; i++) {
 
 console.log(newArray);
 
-//var guessesRemaining;
-//while(guessesRemaining < 6) {
-//guessesRemaining++
+var guessesRemaining = 6;
+
+// while(guessesRemaining > 0){
+//     if(gameWord.includes(userInput)){
+//         console.log('good job');
+//     }
+//     else {
+//         guessesRemaining--;
+//         console.log(guessesRemaining);
+        
+//     }
+
+// }
+
+// 
 
 function buttonPress() {
     var userInput = document.getElementById('user-input').value;
     console.log('user typed ' + userInput);
 
     for(var j = 0; j < gameWord.length; j++) {
+        var wrongGuess;
         if(userInput.toLowerCase() === gameWord[j]) {
 
-            console.log('true');
             newArray[j] = userInput;
-            document.getElementById('letters').textContent = newArray.join(' ');   
+            document.getElementById('letters').textContent = newArray.join(' ');
+            console.log('true');
         }
         else {
             console.log(userInput + ' is wrong');
+            wrongGuess = guessesRemaining--;
+            alert('you have ' + guessesRemaining + ' left');
+            return wrongGuess;
         }
     }
-
 }
 console.log(newArray.join(' '));
