@@ -1,8 +1,11 @@
 /* globals wordList */
-/*exported getRandomIndex randomWord wordList buttonPress */
-//load word function:
-//use randomly grabs word from array list
-//input of a random word from word list when "start" button is pressed
+/*exported getRandomIndex randomWord wordList buttonPress*/
+
+
+//this generates random word
+function getRandomIndex(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
 
 //this function will return a random word for hang person game
 
@@ -12,7 +15,7 @@ function randomWord(wordArray) {
     var index = getRandomIndex(wordArray.length);
     console.log(index);
 
-    //this uses the random number to grab a word from our array
+    //this uses the random number to grab a word from our arrayt
     var word = wordArray[index];
     console.log(word);
 
@@ -20,21 +23,17 @@ function randomWord(wordArray) {
     var newWordArray = word.split('');
     console.log(newWordArray);
 
-    //return word
     return newWordArray;
-
 }
 
-//this generates random word
-function getRandomIndex(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
+//small change
 
-//this is the for loop to check if letter is in word
+// storing randomized word from randomWord(wordArray)
+var arrayValue = randomWord(wordList);
+console.log(arrayValue);
 
 
-var arrayValue = ['w', 'o', 'r', 'd'];
-
+// this is the for loop to check if letter is in word
 function buttonPress() {
     var userInput = document.getElementById('user-input').toLowerCase().value;
     console.log('user typed ' + userInput);
