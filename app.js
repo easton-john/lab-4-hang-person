@@ -8,7 +8,6 @@ function getRandomIndex(max) {
 }
 
 //this function will return a random word for hang person game
-
 function randomWord(wordArray) {
 
     //this pulls a random number
@@ -26,59 +25,58 @@ function randomWord(wordArray) {
     return newWordArray;
 }
 
-//small change
-
 // storing randomized word from randomWord(wordArray)
 var gameWord = randomWord(wordList);
 console.log(gameWord);
 
-//var maxGuesses = 6;
-// if(maxGuesses === 0){
-//     console.log('sorry, out of guesses.');
-//     break;
-// }
-
+// creating array to display _ and correctly guess letters
 var newArray = [];
 for(var i = 0; i < gameWord.length; i++) {
     newArray[i] = '_';
 }
-
-console.log(newArray);
+updateLetters();
 
 var guessesRemaining = 6;
+var userInput;
 
-// while(guessesRemaining > 0){
-//     if(gameWord.includes(userInput)){
-//         console.log('good job');
-//     }
-//     else {
-//         guessesRemaining--;
-//         console.log(guessesRemaining);
-        
-//     }
-
-// }
-
-// 
-
+// grabbing user input
 function buttonPress() {
-    var userInput = document.getElementById('user-input').value;
+    userInput = document.getElementById('user-input').value;
     console.log('user typed ' + userInput);
+    gamePlay();
+    document.getElementById('user-input').value = '';
+}
+
+// showing results to user
+function updateLetters() {
+    document.getElementById('letters').textContent = newArray.join(' ');
+}
+
+// the beautiful hang person game
+function gamePlay() {   
+    if(gameWord.includes(userInput)) {
+        positionCheck();
+        updateLetters();
+    }
+    else {
+        guessesRemaining--;
+        console.log(userInput);
+    }
+}
+
+// checking position of letters
+function positionCheck() {
 
     for(var j = 0; j < gameWord.length; j++) {
-        var wrongGuess;
         if(userInput.toLowerCase() === gameWord[j]) {
 
             newArray[j] = userInput;
-            document.getElementById('letters').textContent = newArray.join(' ');
+            //document.getElementById('letters').textContent = newArray.join(' ');
             console.log('true');
+            
         }
         else {
             console.log(userInput + ' is wrong');
-            wrongGuess = guessesRemaining--;
-            alert('you have ' + guessesRemaining + ' left');
-            return wrongGuess;
         }
     }
 }
-console.log(newArray.join(' '));
