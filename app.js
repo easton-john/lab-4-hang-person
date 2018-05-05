@@ -1,5 +1,5 @@
 /* globals wordList */
-/*exported randomGameWord wordList initiateGame*/
+/*exported randomGameWord wordList initiateGame newGame */
 
 var userInput;
 var guessesRemaining = 5;
@@ -29,7 +29,11 @@ function initiateGame() {
     // clears text box after game runs through loop
     document.getElementById('user-input').value = '';
 }
+//New Game button 
+function newGame(){
+    location.reload();
 
+}
 // the beautiful hang person game
 function gameLoop() {
 
@@ -79,11 +83,16 @@ function winOrLose() {
     if(correctAnswers.join('') === randomGameWord.join('')) {
         alert('You win!');
         document.getElementById('guesses').textContent = 'Congrats!';
-    }
+        document.getElementById('button').disabled = true;
+        
 
+    }
+    
     else {
         if(guessesRemaining === -1) {
             alert('Sorry You LOSE!!!');
+            document.getElementById('button').disabled = true;
+            
         }
     }
 }
