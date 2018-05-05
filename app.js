@@ -54,7 +54,14 @@ function updateLetters() {
 
 // the beautiful hang person game
 function gamePlay() {   
-    if(gameWord.includes(userInput)) {
+    if(guessesRemaining === 1){
+        alert('Sorry You LOSE!!!');
+
+    }
+    else if(userInput === ''){
+        alert('Enter a letter please!');
+    }
+    else if(gameWord.includes(userInput)) {
         positionCheck();
         updateLetters();
     }
