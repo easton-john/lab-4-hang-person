@@ -46,7 +46,7 @@ function gameLoop() {
     // need to git this condition to work still
 
     else if(randomGameWord.includes(userInput)) {
-        positionCheck();
+        correctLetterChecker();
         youWin();
     }
     else {
@@ -56,7 +56,7 @@ function gameLoop() {
 }
 
 // checking position of letters
-function positionCheck() {
+function correctLetterChecker() {
 
     for(var j = 0; j < randomGameWord.length; j++) {
         if(userInput === randomGameWord[j]) {
