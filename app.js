@@ -5,6 +5,7 @@ var userInput;
 var guessesRemaining = 5;
 var lettersGuessed = [];
 
+// random word generator
 var randomGameWord = wordList[Math.floor(Math.random() * Math.floor(wordList.length))];
 randomGameWord = randomGameWord.toUpperCase().split('');
 
@@ -23,7 +24,7 @@ function initiateGame() {
     userInput = document.getElementById('user-input').value.toUpperCase().trim();
     gameLoop();
     upDateGameStatus();
-    youWin();
+    winOrLose();
 
     // clears text box after game runs through loop
     document.getElementById('user-input').value = '';
@@ -32,11 +33,7 @@ function initiateGame() {
 // the beautiful hang person game
 function gameLoop() {
 
-    if(guessesRemaining === 0) {
-        alert('Sorry You LOSE!!!');
-
-    }
-    else if(userInput === '') {
+    if(userInput === '') {
         alert('Enter a letter please!');
     }
 
@@ -44,20 +41,16 @@ function gameLoop() {
         alert('You\'ve already guessed ' + userInput + '. Please enter another letter.');
     }
 
-    // need to git this condition to work still
-
     else if(randomGameWord.includes(userInput)) {
-        correctLetterChecker();
-        youWin();
+        correctLetterPlacer();
     }
     else {
         guessesRemaining--;
     }
-    lettersGuessed.push(userInput);
 }
 
 // checking position of letters
-function correctLetterChecker() {
+function correctLetterPlacer() {
 
     for(var j = 0; j < randomGameWord.length; j++) {
         if(userInput === randomGameWord[j]) {
@@ -68,14 +61,29 @@ function correctLetterChecker() {
 
 // showing results to user
 function upDateGameStatus() {
+
+    if(lettersGuessed.includes(userInput)) {
+        console.log(lettersGuessed);
+    }
+
+    else {
+        lettersGuessed.push(userInput);
+        document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(' ');
+    }
+
     document.getElementById('letters').textContent = correctAnswers.join(' ');
-    document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(', ');
     document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
 }
 
-function youWin() {
+function winOrLose() {
     if(correctAnswers.join('') === randomGameWord.join('')) {
         alert('You win!');
         document.getElementById('guesses').textContent = 'Congrats!';
+    }
+
+    else {
+        if(guessesRemaining === -1) {
+            alert('Sorry You LOSE!!!');
+        }
     }
 }
