@@ -23,6 +23,7 @@ function initiateGame() {
     userInput = document.getElementById('user-input').value.toUpperCase().trim();
     gameLoop();
     upDateGameStatus();
+    youWin();
 
     // clears text box after game runs through loop
     document.getElementById('user-input').value = '';
@@ -75,5 +76,6 @@ function upDateGameStatus() {
 function youWin() {
     if(correctAnswers.join('') === randomGameWord.join('')) {
         alert('You win!');
+        document.getElementById('guesses').textContent = 'Congrats!';
     }
 }
