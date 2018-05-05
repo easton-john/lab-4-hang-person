@@ -1,65 +1,37 @@
 /* globals wordList */
-/*exported getRandomIndex randomWord wordList buttonPress*/
+/*exported randomGameWord wordList initiateGame*/
 
+var userInput;
+var guessesRemaining = 5;
+var correctAnswers = [];
+var lettersGuessed = [];
 
-//this generates random word
-function getRandomIndex(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-//this function will return a random word for hang person game
-function randomWord(wordArray) {
-
-    //this pulls a random number
-    var index = getRandomIndex(wordArray.length);
-    console.log(index);
-
-    //this uses the random number to grab a word from our arrayt
-    var word = wordArray[index];
-    console.log(word);
-
-    //convert word into an array
-    var newWordArray = word.split('');
-    console.log(newWordArray);
-
-    return newWordArray;
-}
-
-// storing randomized word from randomWord(wordArray)
-var gameWord = randomWord(wordList);
-console.log(gameWord);
+var randomGameWord = wordList[Math.floor(Math.random() * Math.floor(wordList.length))];
+randomGameWord = randomGameWord.toUpperCase().split('');
 
 // creating array to display _ and correctly guess letters
-var newArray = [];
-var guessLettersArray = [];
-for(var i = 0; i < gameWord.length; i++) {
-    newArray[i] = '_';
+for(var i = 0; i < randomGameWord.length; i++) {
+    correctAnswers[i] = '_';
 }
-//displaying initial underscores for game
-updateLetters();
+//displaying game status to user
+upDateGameStatus();
 
-var guessesRemaining = 6;
-var userInput;
+document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses to start!';
 
-document.getElementById('guesses').textContent = 'You have 6 guesses to start!';
-// grabbing user input
-function buttonPress() {
-    userInput = document.getElementById('user-input').value.trim();
-    console.log('user typed ' + userInput);
-    gamePlay();
+// grabbing user input and running it through the game loop
+function initiateGame() {
+    userInput = document.getElementById('user-input').value.toUpperCase().trim();
+    gameLoop();
+    upDateGameStatus();
+
+    // clears text box after game runs through loop
     document.getElementById('user-input').value = '';
 }
 
-// showing results to user
-function updateLetters() {
-    document.getElementById('letters').textContent = newArray.join(' ');
-    document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + guessLettersArray.join(', ');
-}
-
 // the beautiful hang person game
-function gamePlay() {
+function gameLoop() {
 
-    if(guessesRemaining === 1) {
+    if(guessesRemaining === 0) {
         alert('Sorry You LOSE!!!');
 
     }
@@ -67,40 +39,37 @@ function gamePlay() {
         alert('Enter a letter please!');
     }
 
-    else if(guessLettersArray.includes(userInput)) {
+    else if(lettersGuessed.includes(userInput)) {
         alert('You\'ve already guessed ' + userInput + '. Please enter another letter.');
     }
-    else if(gameWord.includes(userInput)) {
+
+    // need to git this condition to work still
+    else if(correctAnswers.join('') === randomGameWord.join('')) {
+        alert('You win!');
+    }
+
+    else if(randomGameWord.includes(userInput)) {
         positionCheck();
-        updateLetters();
-        if(gameWord.length === guessLettersArray.length){
-            setTimeout(function(){
-                alert('YOU WIN! The correct word was ' + gameWord.join('') + '!!!');
-            }, 100);
-        }
     }
     else {
         guessesRemaining--;
-        console.log(userInput);
     }
-    document.getElementById('guesses').textContent = 'You have ' + guessesRemaining + ' guesses remaining. ';
-
+    lettersGuessed.push(userInput);
 }
 
 // checking position of letters
 function positionCheck() {
 
-    for(var j = 0; j < gameWord.length; j++) {
-        if(userInput.toLowerCase() === gameWord[j]) {
-
-            newArray[j] = userInput;
-            guessLettersArray[j] = userInput;
-            //document.getElementById('letters').textContent = newArray.join(' ');
-            console.log('true');
-            
-        }
-        else {
-            console.log(userInput + ' is wrong');
+    for(var j = 0; j < randomGameWord.length; j++) {
+        if(userInput === randomGameWord[j]) {
+            correctAnswers[j] = userInput;
         }
     }
+}
+
+// showing results to user
+function upDateGameStatus() {
+    document.getElementById('letters').textContent = correctAnswers.join(' ');
+    document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(', ');
+    document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
 }
