@@ -3,13 +3,13 @@
 
 var userInput;
 var guessesRemaining = 5;
-var correctAnswers = [];
 var lettersGuessed = [];
 
 var randomGameWord = wordList[Math.floor(Math.random() * Math.floor(wordList.length))];
 randomGameWord = randomGameWord.toUpperCase().split('');
 
-// creating array to display _ and correctly guess letters
+// creating array to display game board and correctly guessed letters
+var correctAnswers = [];
 for(var i = 0; i < randomGameWord.length; i++) {
     correctAnswers[i] = '_';
 }
@@ -44,12 +44,10 @@ function gameLoop() {
     }
 
     // need to git this condition to work still
-    else if(correctAnswers.join('') === randomGameWord.join('')) {
-        alert('You win!');
-    }
 
     else if(randomGameWord.includes(userInput)) {
         positionCheck();
+        youWin();
     }
     else {
         guessesRemaining--;
@@ -72,4 +70,10 @@ function upDateGameStatus() {
     document.getElementById('letters').textContent = correctAnswers.join(' ');
     document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(', ');
     document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
+}
+
+function youWin() {
+    if(correctAnswers.join('') === randomGameWord.join('')) {
+        alert('You win!');
+    }
 }
