@@ -80,7 +80,7 @@ function upDateGameStatus() {
     document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
 
 }
-
+//Swaps out which bomb is showing!
 function updateImage(){
     document.getElementById('images').src = 'bomb' + guessesRemaining + '.svg';
 }
