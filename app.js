@@ -16,6 +16,7 @@ for(var i = 0; i < randomGameWord.length; i++) {
 }
 //displaying game status to user
 upDateGameStatus();
+updateImage();
 
 document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses to start!';
 
@@ -46,8 +47,10 @@ function gameLoop() {
     }
     else {
         guessesRemaining--;
+        updateImage();
     }
 }
+
 
 // checking position of letters
 function correctLetterPlacer() {
@@ -69,10 +72,17 @@ function upDateGameStatus() {
     else {
         lettersGuessed.push(userInput);
         document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(' ');
+        
+        
     }
 
     document.getElementById('letters').textContent = correctAnswers.join(' ');
     document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
+
+}
+
+function updateImage(){
+    document.getElementById('images').src = 'bomb' + guessesRemaining + '.svg';
 }
 
 function winOrLose() {

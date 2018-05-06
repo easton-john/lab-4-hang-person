@@ -1,4 +1,4 @@
-/*export*/
+/*global img deadpool newGame */
 body{
     background-color: rgb(175, 100, 30);
 }
@@ -43,11 +43,15 @@ button {
     border-radius: 5px;
 }
 
-#zero {
-    visibility: hidden;
+#deadDeadool {
+    display: inline;
+    z-index: 0;
 }
-
+img{
+    align-content: center;
+}
 #newgame {
     display: flex;
     justify-content: center;
 }
+
