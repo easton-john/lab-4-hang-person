@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Hang Person</h1>
-    <span id="letters"></span>
-    <p><input id="user-input" maxlength="1">
-        <button onclick="initiateGame()">test me!</button>
-        <button onclick="wordButton()">new word</button>
+    <h1 id="game-header">HANGMAN</h1>
+
+    <img src="bomb-1.png">
+    
+    <section id="game-images">
+       
+    </section>
+   
+    <p id="game-board"></p>
+   
+    <section>
+        <input id="user-input" maxlength="1">
+        <button id="button" onclick="initiateGame()">ENTER</button>
+    </section>
+
+    <p>
+        <button onclick="newGame()">NEW GAME</button>
     </p>
+
     <p id="guessed-letters">Guessed letters:</p>
+    
     <p id="guesses"></p>
-<script src="word.js"></script>
+
+    <script src="word.js"></script>
 <script src="app.js"></script>
+
 </body>
 </html>

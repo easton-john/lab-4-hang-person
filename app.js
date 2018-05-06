@@ -17,7 +17,7 @@ for(var i = 0; i < randomGameWord.length; i++) {
 //displaying game status to user
 upDateGameStatus();
 
-document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses to start!';
+document.getElementById('guesses').textContent = 'Guesses remaining: ' + (guessesRemaining + 1);
 
 // grabbing user input and running it through the game loop
 function initiateGame() {
@@ -71,19 +71,25 @@ function upDateGameStatus() {
         document.getElementById('guessed-letters').textContent = 'Guessed letters: ' + lettersGuessed.join(' ');
     }
 
-    document.getElementById('letters').textContent = correctAnswers.join(' ');
-    document.getElementById('guesses').textContent = 'You have ' + (guessesRemaining + 1) + ' guesses remaining. ';
+    document.getElementById('game-board').textContent = correctAnswers.join(' ');
+    document.getElementById('guesses').textContent = 'Guesses remaining: ' + (guessesRemaining + 1);
 }
 
 function winOrLose() {
     if(correctAnswers.join('') === randomGameWord.join('')) {
         alert('You win!');
         document.getElementById('guesses').textContent = 'Congrats!';
+        document.getElementById('button').disabled = true;
     }
 
     else {
         if(guessesRemaining === -1) {
             alert('Sorry You LOSE!!!');
+            document.getElementById('button').disabled = true;
         }
     }
+}
+
+function newGame() {
+    location.reload();
 }
