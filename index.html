@@ -8,27 +8,31 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <section class="headers">
-        <h1 id="gameHeader">HANGMAN</h1>
-    </section>
+    <div id="gameboard">
+        <section class="headers">
+            <h1 id="gameHeader">HANGMAN</h1>
+        </section>
 
-    <h2 id="guesses"></h2>
-    
-    <div>
-        <img id="images">
+        <h2 id="guesses"></h2>
+        
+        <div id="imagespace">
+            <span><img id="images"></span>
+            <span><img id="deadpool" src="8.png"></span>
+        </div>
+
         <span id="letters"></span>
-    </div>
-    
-    <section id="gameFunctions">
-        <input id="user-input" maxlength="1">
-        <button id="button" onclick="initiateGame()">ENTER</button>
-    </section>
-    
-    <section id="newGameSection">
-        <button id="newgame" onclick="newGame()">New Game</button>
-    </section>
+        
+        <section id="gameFunctions">
+            <input id="user-input" maxlength="1">
+            <button id="button" onclick="initiateGame()">ENTER</button>
+        </section>
+        
+        <section id="newGameSection">
+            <button id="newgame" onclick="newGame()">New Game</button>
+        </section>
 
-    <p id="guessed-letters"></p>
+        <p id="guessed-letters"></p>
+    </div>
 
 <script src="word.js"></script>
 <script src="app.js"></script>

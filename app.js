@@ -49,6 +49,7 @@ function gameLoop() {
     }
     else {
         guessesRemaining--;
+        imageIndex++;
     }
 }
 
@@ -83,7 +84,7 @@ function winOrLose() {
     if(correctAnswers.join('') === randomGameWord.join('')) {
         alert('You win!');
         document.getElementById('guesses').textContent = 'Congrats!';
-        //document.getElementById('images').src = '8.png';
+        document.getElementById('images').src = '8.png';
         document.getElementById('button').disabled = true;
 
     }
@@ -91,7 +92,8 @@ function winOrLose() {
     else {
         if(guessesRemaining === -1) {
             alert('Sorry You LOSE!!!');
-            //document.getElementById('images').src = '8.png';
+            document.getElementById('guesses').textContent = 'Try again!';
+            document.getElementById('deadpool').style.visibility = 'visible';
             document.getElementById('button').disabled = true;
         }
     }
@@ -100,7 +102,6 @@ function winOrLose() {
 //Swaps out which bomb is showing!
 function updateImage(){
     document.getElementById('images').src = imageIndex + 1 + '.png';
-    imageIndex++;
 }
 
 //New Game button
