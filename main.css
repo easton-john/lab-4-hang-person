@@ -1,15 +1,13 @@
 /*global img deadpool newGame */
 
-/*#gameboard {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: solid;
-    width: 80%;
-}*/
-
 body {
     background-color: lightgoldenrodyellow;
+    border-style: solid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 10px;
+    padding: 30px;
 }
 
 .headers {
@@ -18,17 +16,18 @@ body {
 }
 
 h1 {
-    /*display: inline; */
     font-size: 50px;
     border-style: dotted;
     border-color: black;
     padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
 }
 
 h2 {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 img {
@@ -46,6 +45,9 @@ img {
 #button {
     font-size: 25px;
     margin: 10px;
+    border-radius: 5px;
+    background-color: maroon;
+    color: white;
 }
 
 #user-input {
@@ -64,21 +66,14 @@ img {
 }
 
 #newgame {
-    font-size: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: black;
+    color: lightblue;
 }
 
-/*#user-input {
-    padding: 10px;
-}
-
-
-*/
 #guessed-letters {
     display: flex;
     justify-content: center;
     font-size: 25px;
-}
-
-#deadpool {
-    visibility: hidden;
 }
