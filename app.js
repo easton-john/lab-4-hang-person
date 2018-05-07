@@ -101,7 +101,7 @@ function winOrLose() {
 
 //Swaps out which bomb is showing!
 function updateImage(){
-    document.getElementById('images').src = imageIndex + 1 + '.png';
+    document.getElementById('images').src = (imageIndex + 1).toString() + '.png';
 }
 
 //New Game button
