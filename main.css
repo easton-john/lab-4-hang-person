@@ -1,57 +1,71 @@
 /*global img deadpool newGame */
-body{
-    background-color: rgb(175, 100, 30);
+body {
+    background-color: lightgoldenrodyellow;
 }
 
-#gameHeader {
-    color: rgb(27, 43, 43);
-    font-size: 3em;
+.headers {
     display: flex;
     justify-content: center;
 }
 
-span {
-    display: flex;
-    justify-content: center;
-    font-size: 5em;
-}
-
-#gameFunctions {
-   display: flex;
-   justify-content: center;
-   border: 3px solid;
-   height: 4em;
-}
-
-input {
-    font-size: 60px;
-    width: 1em; 
-    text-align: center;
-}
-
-hr {
-    border-color:rgb(119, 42, 42);
-}
-
-button {
-    display: flex;
-    justify-content: center;
-    background-color: rgb(67, 138, 120);
-    border: none;
-    color: rgb(240, 220, 220);
-    margin: 4px;
-    border-radius: 5px;
-}
-
-#deadDeadool {
+h1 {
     display: inline;
-    z-index: 0;
+    font-size: 50px;
+    border-style: dotted;
+    border-color: black;
+    padding: 10px;
 }
-img{
-    align-content: center;
-}
-#newgame {
+
+h2 {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#gameFunctions {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+#button {
+    font-size: 25px;
+    margin: 10px;
+}
+
+#user-input {
+    font-size: 20px;
+}
+#letters {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+#newGameSection {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+#newgame {
+    font-size: 15px;
+}
+
+/*#user-input {
+    padding: 10px;
+}
+
+
+*/
+#guessed-letters {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
 }
 

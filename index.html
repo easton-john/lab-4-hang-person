@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1 id="gameHeader">STOP THE BOMB!!!</h1>
+    <section class="headers">
+        <h1 id="gameHeader">HANGMAN</h1>
+    </section>
+
+    <h2 id="guesses"></h2>
+    
     <div>
-    <hr>
-    <img id="images">
-    <span id="letters" class="display"></span>
-    <hr>
+        <img id="images">
+        <span id="letters"></span>
     </div>
     
     <section id="gameFunctions">
-        <input id="user-input" class="display" maxlength="1">
-        <button onclick="initiateGame()" id="button" >Guess Letter</button> 
-    </section>
-
-    <section>
-        <button id="newgame" class="display" onclick="newGame()">New Game</button>
+        <input id="user-input" maxlength="1">
+        <button id="button" onclick="initiateGame()">ENTER</button>
     </section>
     
-    <p id="guessed-letters">Guessed letters:</p>
-    <p id="guesses"></p>
+    <section id="newGameSection">
+        <button id="newgame" onclick="newGame()">New Game</button>
+    </section>
+
+    <p id="guessed-letters"></p>
+
 <script src="word.js"></script>
 <script src="app.js"></script>
 </body>
